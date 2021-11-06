@@ -51,14 +51,9 @@ class AddresseeController extends BaseController
             'email'      => 'required|email'
             ]);
         
-        if(Auth::user()->todo()->Create($request->all())){
-            return response()->json(['status' => 'success']);
-        }else{
-            return response()->json(['status' => 'fail']);
-        }
-//        $addressee = Addressee::create($request->all());
-//
-//        return response()->json($addressee, 201);
+        $addressee = Addressee::create($request->all());
+
+        return response()->json($addressee, 201);
     }
     
     /**
