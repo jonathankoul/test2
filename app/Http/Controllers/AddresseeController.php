@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 
 class AddresseeController extends BaseController
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    public function index(Request $request)
+    {
+        $todo = Auth::user()->todo()->get();
+        return response()->json(['status' => 'success','result' => $todo]);
+    }
+    
     public function showAllAddressees()
     {
         return response()->json(Addressee::all());
@@ -40,9 +51,14 @@ class AddresseeController extends BaseController
             'email'      => 'required|email'
             ]);
         
-        $addressee = Addressee::create($request->all());
-
-        return response()->json($addressee, 201);
+        if(Auth::user()->todo()->Create($request->all())){
+            return response()->json(['status' => 'success']);
+        }else{
+            return response()->json(['status' => 'fail']);
+        }
+//        $addressee = Addressee::create($request->all());
+//
+//        return response()->json($addressee, 201);
     }
     
     /**

@@ -19,6 +19,8 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     
+  $router->get('login/','UserController@authenticate');
+    
   $router->get('addressees',  ['uses' => 'AddresseeController@showAllAddressees']);
 
   $router->get('addressees/{id}', ['uses' => 'AddresseeController@showOneAddressees']);
