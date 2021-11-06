@@ -64,10 +64,19 @@ class AddresseeController extends BaseController
      */
     public function updateAddressees($id, Request $request)
     {
-        $author = Addressee::findOrFail($id);
-        $author->update($request->all());
+        $addressee = Addressee::findOrFail($id);
+        /**
+         * Beefed up validation
+         */
+        $this->validate($request,[
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'phone'      => 'required|regex:/(01)[0-9]{9}/',
+            'email'      => 'required|email'
+            ]);
+        $addressee->update($request->all());
 
-        return response()->json($author, 200);
+        return response()->json($addressee, 200);
     }
     
     /**
