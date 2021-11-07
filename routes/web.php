@@ -23,6 +23,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   
   $router->get('users', ['uses' =>'UserController@showAllUsers']);
   $router->get('users/{id}', ['uses' =>'UserController@showOneUsers']);
+  $router->post('users', ['uses' => 'UserController@createUsers']);
     
   $router->get('addressees',  ['uses' => 'AddresseeController@showAllAddressees']);
   $router->get('addressees/{id}', ['uses' => 'AddresseeController@showOneAddressees']);

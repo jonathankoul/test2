@@ -33,4 +33,28 @@ class UserController extends BaseController
         
     return response()->json(User::find($id));
   }
+  
+   /**
+     * 
+     * @param Request $request
+     * @return type
+     * 
+     */
+    public function createUsers(Request $request)
+    {
+        /**
+         * Beefed up validation
+         */
+        $this->validate($request,[
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'phone'      => 'required|regex:/(01)[0-9]{9}/',
+            'email'      => 'required|email',
+            'password'   => 'required'
+            ]);
+        
+        $user = User::create($request->all());
+
+        return response()->json($user, 201);
+    }
 }    
