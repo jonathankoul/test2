@@ -19,7 +19,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email','password'
+        'first_name', 'last_name', 'email','password'
     ];
 
     /**
@@ -31,11 +31,4 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'password','created_at', 'updated_at'
     ];
     
-    /*
-     * Get Addressees of User
-     */
-    public function addressees()
-    {
-        return $this->hasMany('App\Addressees','user_id');
-    }
 }
