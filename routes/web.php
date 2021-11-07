@@ -19,15 +19,14 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     
-  $router->get('login/','UserController@authenticate');
+  $router->get('login', ['uses' =>'UserController@authenticate']);
+  
+  $router->get('users', ['uses' =>'UserController@showAllUsers']);
+  $router->get('users/{id}', ['uses' =>'UserController@showOneUsers']);
     
   $router->get('addressees',  ['uses' => 'AddresseeController@showAllAddressees']);
-
   $router->get('addressees/{id}', ['uses' => 'AddresseeController@showOneAddressees']);
-
   $router->post('addressees', ['uses' => 'AddresseeController@createAddressees']);
-
   $router->delete('addressees/{id}', ['uses' => 'AddresseeController@deleteAddressees']);
-
   $router->put('addressees/{id}', ['uses' => 'AddresseeController@updateAddressees']);
 });

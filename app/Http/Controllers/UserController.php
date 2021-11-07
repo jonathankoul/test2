@@ -10,6 +10,7 @@ use App\Models\User;
 
 class UserController extends BaseController
 {
+    
   public function __construct()
    {
      //  $this->middleware('auth:api');
@@ -29,4 +30,18 @@ class UserController extends BaseController
           User::where('email', $request->input('email'))->update(['api_key' => "$apikey"]);;
           return response()->json(['status' => 'success','api_key' => $apikey]);
    }
+    
+  public function showAllUsers()
+  {
+    return response()->json(User::all());
+  }
+   
+  public function showOneUsers($id)
+  {
+    /**
+     * Check if ID is integer
+     */
+        
+    return response()->json(User::find($id));
+  }
 }    
