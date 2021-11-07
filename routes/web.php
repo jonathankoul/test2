@@ -19,7 +19,7 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     
-  $router->get('login', ['uses' =>'UserController@authenticate']);
+  $router->get('login', ['uses' =>'LoginController@authenticate']);
   
   $router->get('users', ['uses' =>'UserController@showAllUsers']);
   $router->get('users/{id}', ['uses' =>'UserController@showOneUsers']);
