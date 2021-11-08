@@ -48,7 +48,8 @@ class UserTest extends TestCase
     /**
      * PUT User
      */
-    public function testShouldPutUser(){
+    public function testShouldPutUser()
+    {
         $parameters = [
             'first_name' => 'Jonny',
             'last_name' => 'Koulouris',
