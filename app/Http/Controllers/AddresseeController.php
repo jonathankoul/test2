@@ -87,6 +87,6 @@ class AddresseeController extends BaseController
     public function deleteAddressees($id)
     {
         Addressee::findOrFail($id)->delete();
-        return response('Addressee Deleted Successfully', 200);
+        return response('Addressee Deleted Successfully', 410);
     }
 }
