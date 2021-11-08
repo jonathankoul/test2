@@ -81,4 +81,15 @@ class UserController extends BaseController
 
         return response()->json($user, 200);
     }
+    
+    /**
+     * 
+     * @param type $id
+     * @return type
+     */
+    public function deleteUsers($id)
+    {
+        User::findOrFail($id)->delete();
+        return response('User Deleted Successfully', 410);
+    }
 }    

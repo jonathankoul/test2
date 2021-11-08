@@ -29,7 +29,7 @@ class AddresseeController extends BaseController
      * @param type $id
      * @return type
      */
-    public function showOneAddressees($id){
+    public function showOneAddressee($id){
         return response()->json(Addressee::find($id));
     }
     
@@ -39,7 +39,7 @@ class AddresseeController extends BaseController
      * @return type
      * 
      */
-    public function createAddressees(Request $request)
+    public function createAddressee(Request $request)
     {
         /**
          * Beefed up validation
@@ -62,7 +62,7 @@ class AddresseeController extends BaseController
      * @param Request $request
      * @return type
      */
-    public function updateAddressees($id, Request $request)
+    public function updateAddressee($id, Request $request)
     {
         $addressee = Addressee::findOrFail($id);
         /**
@@ -84,7 +84,7 @@ class AddresseeController extends BaseController
      * @param type $id
      * @return type
      */
-    public function deleteAddressees($id)
+    public function deleteAddressee($id)
     {
         Addressee::findOrFail($id)->delete();
         return response('Addressee Deleted Successfully', 410);
