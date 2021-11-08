@@ -64,7 +64,9 @@ class AddresseeTest extends TestCase
      */
     public function testShouldDeleteAddressee()
     {
-        $this->delete("api/addressees/6", $this->header);
+        $parameters = [
+        ];
+        $this->delete("api/addressees/7",$parameters, $this->header);
         $this->seeStatusCode(410); 
     }
 }
